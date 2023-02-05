@@ -1,0 +1,41 @@
+$color: red;
+$border-color: blue;
+$fontsize: 16px;
+
+@use "/functions.scss" as f;
+
+@mixin article-card($color1, $color2, $size) {
+    border: f.rem($size) solid $color2;
+    text-align: center;
+
+    &:nth-child(odd) {
+        color: $color1;
+    }
+    &:nth-child(even) {
+        color: $color2;
+    }
+}
+
+div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border: 1px solid $color;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+
+    section {
+        display: flex;
+    }
+
+    h1 {
+        color: green;
+        text-decoration: underline;
+        text-decoration-color: gray;
+    }
+
+    article {
+        @include article-card($color, $border-color, $fontsize);
+    }
+}
